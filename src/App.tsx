@@ -1,7 +1,9 @@
-function App() {
+import Header from './Header'
+
+const App = () => {
   return (
     <>
-      <div>Restaurant App</div>
+      <Header/>
     </>
   )
 }
