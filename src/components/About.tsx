@@ -1,15 +1,10 @@
-import aboutImage from '../../public/about.jpg';
+import aboutImage from '/about.jpg';
 
 import {Container, Row, Col, Image } from "react-bootstrap";
 
 const About = () => {
     return (
-        <Container>
-            <Row className="justify-content-md-center">
-                <Col  xs lg="2">
-                    <h2 className="text-center">About Us</h2>
-                </Col>
-            </Row>
+        <Container fluid>
             <Row>
                 <Col>
                     <Image src={aboutImage} alt='About Image' className="about-img"/>
