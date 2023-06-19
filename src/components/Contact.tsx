@@ -1,8 +1,24 @@
 import { Button, Col, Container, FloatingLabel, Form, Row } from "react-bootstrap";
 
 import '../style/contact.scss'
+import { useState } from "react";
 
 const Contact = () => {
+    const [messageInfo, setMessageInfo] = useState({
+        email: '',
+        context: ''
+    })
+
+    const onHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const currentField = event.currentTarget.id;
+        const currentInfo = { 
+            ...messageInfo,
+            ...(currentField && {[currentField]: event.currentTarget.value})
+         };
+        console.log(currentInfo)
+        setMessageInfo(currentInfo)
+    }
+
     return (
         <Container className="mt-3 mb-3">
             <Row>
@@ -17,17 +33,18 @@ const Contact = () => {
                     <p className="text-center contact-info-header">Message us to share your thought</p>
                     <Form>
                         <FloatingLabel
-                            controlId="floatingTextarea"
+                            controlId="email"
                             label="Email"
                             className="mb-3"
                         >
-                            <Form.Control type="email" placeholder="Enter email"/>
+                            <Form.Control type="email" placeholder="Enter email" onChange={onHandleChange}/>
                         </FloatingLabel>
-                        <FloatingLabel controlId="floatingTextarea2" label="Comments">
+                        <FloatingLabel controlId="context" label="Comments">
                             <Form.Control
                                 as="textarea"
                                 placeholder="Leave a comment here"
                                 style={{ height: '100px' }}
+                                onChange={onHandleChange}
                             />
                         </FloatingLabel>
                         <Button className="mt-1 mb-1 float-end" variant="primary" type="submit">
