@@ -1,7 +1,7 @@
 import { Button, Col, Container, FloatingLabel, Form, Row } from "react-bootstrap";
 
 import '../style/contact.scss'
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Contact = () => {
     const [messageInfo, setMessageInfo] = useState({
@@ -15,10 +15,14 @@ const Contact = () => {
             ...messageInfo,
             ...(currentField && {[currentField]: event.currentTarget.value})
          };
-        console.log(currentInfo)
         setMessageInfo(currentInfo)
     }
 
+    const onHandleSubmit = (event: React.FormEvent) => {
+        event.preventDefault()
+        console.log('I have been called')
+    }
+    
     return (
         <Container className="mt-3 mb-3">
             <Row>
@@ -31,7 +35,7 @@ const Contact = () => {
                 
                 <Col lg={6} className="mt-sm-1 mt-md-1 mt-lg-0 contact-section-container">
                     <p className="text-center contact-info-header">Message us to share your thought</p>
-                    <Form>
+                    <Form onSubmit={onHandleSubmit}>
                         <FloatingLabel
                             controlId="email"
                             label="Email"

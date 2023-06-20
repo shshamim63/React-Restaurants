@@ -9,9 +9,9 @@ interface Header {
 }
 
 const Header = ({selectedSection, handleSeclectedSection}: Header) => {
+    
     const updateSelectecTab = (key: string) => {
-        console.log(key, event)
-        handleSeclectedSection(key);
+        handleSeclectedSection(key)
     }
 
     return (
