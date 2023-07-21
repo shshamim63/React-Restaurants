@@ -2,6 +2,7 @@ import { Button, Col, Container, FloatingLabel, Form, Row } from "react-bootstra
 
 import '../style/contact.scss'
 import React, { useState } from "react";
+import { receiveComment } from "../utils/receive-comment";
 
 const Contact = () => {
     const [messageInfo, setMessageInfo] = useState({
@@ -18,11 +19,15 @@ const Contact = () => {
         setMessageInfo(currentInfo)
     }
 
-    const onHandleSubmit = (event: React.FormEvent) => {
+    const onHandleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
+        const isValid = Object.values(messageInfo).every((val) => val != '')
+        if (isValid) {
+            await receiveComment(messageInfo)
+        }
         console.log('I have been called')
     }
-    
+
     return (
         <Container className="mt-3 mb-3">
             <Row>
@@ -62,3 +67,4 @@ const Contact = () => {
 }
 
 export default Contact;
+
