@@ -25,7 +25,6 @@ const Contact = () => {
         if (isValid) {
             await receiveComment(messageInfo)
         }
-        console.log('I have been called')
     }
 
     return (
